@@ -1,1 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@1,400;1,500&display=swap');
+
 @import "tailwindcss";
+
+@layer base {
+  /* Global styles */
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
+
+  h1{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: #e2dfd2;
+    text-align: center;
+  }
+
+  h2{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: #e2dfd2;
+  }
+
+  h3{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: #e2dfd2
+  }
+
+  h4{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 200;
+    font-size: 2.5rem;
+    color: #e2dfd2;
+  }
+
+  h5{
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 100;
+    font-size: 2.5rem;
+    color: #e2dfd2;
+  }
+}
+
+@layer components {
+  /* Movie card component */
+  .movie-card {
+    @apply bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden;
+    width: 300px;
+    height: 450px;
+  }
+
+  .movie-card img {
+    @apply w-full h-2/3 object-cover;
+  }
+
+  .movie-card-title {
+    @apply font-semibold text-xl mt-4 px-4;
+  }
+
+  .movie-card-description {
+    @apply text-sm text-gray-400 px-4 py-2;
+  }
+}
+
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient {
+    background: linear-gradient(90deg, rgb(119, 0, 255) 0%, rgba(0, 204, 255, 1) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  /* Fancy Text */
+  .fancy-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #f5a623;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Hide Scrollbar */
+  .hide-scrollbar {
+    overflow: hidden;
+  }
+}
