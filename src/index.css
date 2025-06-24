@@ -14,9 +14,14 @@
   h1{
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     color: #e2dfd2;
     text-align: center;
+    max-width: 35rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+    margin-top: 2rem;
   }
 
   h2{
@@ -48,7 +53,39 @@
   }
 }
 
+.bg-hero{
+  @apply bg-cover bg-center;
+  background-image: url('public/background.png');
+} 
+
 @layer components {
+  main{
+    @apply min-h-screen flex items-center justify-center;
+  }
+
+  .wrapper{
+    @apply flex flex-col items-center justify-center;
+  }
+
+  header img{
+    @apply mx-auto h-auto w-128;
+    image-rendering: optimizeQuality;
+     
+  }
+
+  .search{
+    @apply flex items-center bg-gray-500 rounded-full py-2 w-full max-w-xl mt-6;
+  }
+
+  .search input {
+    @apply flex-1 bg-transparent text-white placeholder-gray-300 outline-none;
+    font-size: 1rem;
+  }
+
+  .search img{
+    @apply w-6 h-6 ml-2;
+  }
+
   /* Movie card component */
   .movie-card {
     @apply bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden;
