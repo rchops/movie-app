@@ -34,7 +34,7 @@
   h3{
     font-family: 'Bebas Neue', sans-serif;
     font-weight: 300;
-    font-size: 2.5rem;
+    font-size: 1.2rem;
     color: #e2dfd2
   }
 
@@ -51,6 +51,7 @@
     font-size: 2.5rem;
     color: #e2dfd2;
   }
+
 }
 
 .bg-hero{
@@ -64,7 +65,7 @@
   }
 
   .wrapper{
-    @apply flex flex-col items-center justify-center;
+    @apply flex flex-col items-center justify-center max-w-7xl mx-auto px-6;
   }
 
   header img{
@@ -88,21 +89,36 @@
 
   /* Movie card component */
   .movie-card {
-    @apply bg-gray-800 text-white rounded-lg shadow-lg overflow-hidden;
-    width: 300px;
-    height: 450px;
+      @apply bg-indigo-500 p-5 rounded-2xl shadow-inner;
+    
+
+    & .img {
+      @apply rounded-lg h-auto w-full;
+    }
+
+    & .title {
+      @apply text-gray-300;
+    }
+
+    & .description {
+      @apply text-white font-bold text-base line-clamp-1;
+    }
+
+    & .star-icon{
+      @apply w-5 h-5;
+    }
+
+    & .poster {
+      @apply rounded-lg;
+    }
+    
+    & .rating{
+      @apply flex flex-row items-center gap-0.5 text-gray-300 font-semibold;
+    }
   }
 
-  .movie-card img {
-    @apply w-full h-2/3 object-cover;
-  }
-
-  .movie-card-title {
-    @apply font-semibold text-xl mt-4 px-4;
-  }
-
-  .movie-card-description {
-    @apply text-sm text-gray-400 px-4 py-2;
+  .movie-grid{
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6;
   }
 }
 
