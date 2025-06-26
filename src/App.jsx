@@ -1,6 +1,7 @@
 import Search from './components/Search';
 import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
+import {useDebounce} from 'react-use';
 import {useState, useEffect} from 'react';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -18,14 +19,18 @@ const API_OPTIONS = {
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, seterrorMessage] = useState('');
-  const [movieList, setmovieList] = useState([])
-  const [isLoading, setisLoading] = useState(false)
+  const [movieList, setmovieList] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
+  const [debouncedSearchTerm, setdebouncedSearchTerm] = useState('');
 
-  const fetchMovies = async () => {
+  useDebounce(() => setdebouncedSearchTerm(searchTerm), 500, [searchTerm]);
+
+  const fetchMovies = async (query = '') => {
     setisLoading(true);
     seterrorMessage('');
     try{
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` :
+       `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
       const response = await fetch(endpoint, API_OPTIONS);
       if(!response.ok){
         throw new Error("Failed to fetch movies");
@@ -51,8 +56,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    fetchMovies(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
 
   return (
     <main className='bg-hero'>
