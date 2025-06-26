@@ -1,6 +1,7 @@
 import Search from './components/Search';
 import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
+import {useDebounce} from 'react-use';
 import {useState, useEffect} from 'react';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -18,8 +19,11 @@ const API_OPTIONS = {
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, seterrorMessage] = useState('');
-  const [movieList, setmovieList] = useState([])
-  const [isLoading, setisLoading] = useState(false)
+  const [movieList, setmovieList] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
+  const [debouncedSearchTerm, setdebouncedSearchTerm] = useState('');
+
+  useDebounce(() => setdebouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
   const fetchMovies = async (query = '') => {
     setisLoading(true);
@@ -52,8 +56,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
 
   return (
     <main className='bg-hero'>
