@@ -87,6 +87,36 @@
     @apply w-6 h-6 ml-2;
   }
 
+  .trending ul {
+    @apply flex flex-row gap-20 flex-wrap justify-start mt-3 mb-3;
+  }
+
+  .trending li {
+    @apply relative w-36 h-56 flex items-center justify-center;
+  }
+
+  .trending h2 { 
+    @apply flex flex-row text-left max-w-7xl -mx-24;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: #e2dfd2;
+  }
+  
+  .trending-number {
+    @apply text-[2.5rem] sm:text-[5rem] font-bold leading-none text-left;
+    color: transparent;
+    -webkit-text-stroke: 2px #ccc;
+  }
+  .trending-poster {
+    @apply w-full h-auto rounded-xl shadow-lg;
+    transition: transform 0.3s ease;
+  }
+
+  .trending-poster:hover {
+    transform: scale(1.05);
+  }
+
   /* Movie card component */
   .movie-card {
       @apply bg-indigo-500 p-5 rounded-2xl shadow-inner;
